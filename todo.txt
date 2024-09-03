@@ -1,0 +1,28 @@
+API:
+  - Send message to group (email)
+  - Get contact groups
+  - get contacts
+  - assign contact to group
+  - add new contact
+  - Send SMS to group
+  - send message to contact,
+
+Tables:
+  
+Contact {
+  _id,
+  name, 
+  vectors: {
+    email,
+    phone,
+    etc.,
+  }
+}
+ContactGroup {
+  contactId: _id,
+  groupId: _id,
+}
+Groups {
+  _id,
+  label,
+}
