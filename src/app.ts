@@ -32,6 +32,7 @@ app.use(function (
   res: express.Response,
   next: express.NextFunction
 ) {
+  console.log(err.message);
   if (err instanceof LighthouseError) {
     return res.status(err.httpCode).json({
       message: err.message,

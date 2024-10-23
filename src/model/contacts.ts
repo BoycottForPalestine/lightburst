@@ -82,23 +82,22 @@ async function searchContactsByName(
   return contacts as unknown as Contact[];
 }
 
-async function getContactsByGroup(groupId: string): Promise<Contact[]> {
-  const db = await getDb();
+// TODO: Create a separate function that's paginated (this function is used for batch contact)
+// async function getContactsByGroup(groupId: string): Promise<Contact[]> {
+//   const db = await getDb();
 
-  // TODO: Paginate this
+//   const contacts = await db
+//     .collection("contactsGroups")
+//     .find({ groupId })
+//     .toArray();
 
-  const contacts = await db
-    .collection("contactsGroups")
-    .find({ groupId })
-    .toArray();
+//   const contactIds = contacts.map((contact) => contact.contactId);
 
-  const contactIds = contacts.map((contact) => contact.contactId);
-
-  return (await db
-    .collection("contacts")
-    .find({ _id: { $in: contactIds } })
-    .toArray()) as unknown as Contact[];
-}
+//   return (await db
+//     .collection("contacts")
+//     .find({ _id: { $in: contactIds } })
+//     .toArray()) as unknown as Contact[];
+// }
 
 async function getContactById(contactId: string): Promise<Contact | null> {
   const db = await getDb();
